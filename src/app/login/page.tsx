@@ -20,18 +20,11 @@ const Login = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
   } = useForm<FormFields>()
 
   const onSubmit: SubmitHandler<FormFields> = (data) => {
     console.log(data)
     toast.success('Login successful!')
-  }
-
-  // Show validation errors as toasts
-  const onError = () => {
-    if (errors.email?.message) toast.error(errors.email.message)
-    if (errors.password?.message) toast.error(errors.password.message)
   }
 
   return (
@@ -69,7 +62,7 @@ const Login = () => {
             <Button
               className="w-full py-5"
               type="submit"
-              onClick={handleSubmit(onSubmit, onError)}
+              onClick={handleSubmit(onSubmit)}
             >
               Login
             </Button>
